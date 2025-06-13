@@ -1,35 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { DesktopLayout } from "./components/layout/DesktopLayout";
+import { MobileLayout } from "./components/layout/MobileLayout";
+import { HeroSection } from "./components/ui/desktop/HeroSection";
+import { ContentGrid } from "./components/ui/desktop/ContentGrid";
+import { ProfilePage } from "./pages/ProfilePage";
+import { JonghapSajuPage } from "./pages/JonghapSajuPage";
+import { CoupleGungapPage } from "./pages/CoupleGungapPage";
+
+const cardItems = [
+  {
+    imageUrl: "https://placehold.co/600x400/1B1F2A/ffffff?text=Astrology",
+    title: "Astrology",
+    description: "Astrology studies celestial bodies...",
+    views: "122.8K",
+    likes: "10.4K",
+  },
+  {
+    imageUrl: "https://placehold.co/600x400/1B1F2A/ffffff?text=Tarot+Reading",
+    title: "Tarot Reading",
+    description: "Tarot uses cards for insights into...",
+    views: "54K",
+    likes: "21.1K",
+  },
+  {
+    imageUrl: "https://placehold.co/600x400/1B1F2A/ffffff?text=Physiognomy",
+    title: "Physiognomy",
+    description: "Physiognomy assesses character...",
+    views: "23.6K",
+    likes: "42K",
+  },
+];
+
+const HomePageContent = () => (
+  <>
+    <HeroSection
+      title="DON'T LET THE FUTURE SURPRISE YOU!"
+      buttonText="BOOK YOUR READING"
+      imageUrl="https://placehold.co/1200x400/0B1F2A/ffffff?text=HERO+IMAGE"
+    />
+    <ContentGrid items={cardItems} />
+  </>
+);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState("home");
+
+  const handleNavigate = (page: string) => {
+    setCurrentPage(page);
+  };
+
+  const CurrentPageContent = () => {
+    if (currentPage === "profile") return <ProfilePage />;
+    if (currentPage === "jonghap") return <JonghapSajuPage />;
+    if (currentPage === "couple") return <CoupleGungapPage />;
+    return <HomePageContent />;
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      {/* 데스크톱 세계 */}
+      <div className="hidden lg:block">
+        <DesktopLayout
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onProfileClick={() => handleNavigate("profile")}
+        >
+          <CurrentPageContent />
+        </DesktopLayout>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      {/* 모바일 세계 */}
+      <div className="lg:hidden">
+        <MobileLayout onLogoClick={() => handleNavigate("home")}>
+          <CurrentPageContent />
+        </MobileLayout>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
