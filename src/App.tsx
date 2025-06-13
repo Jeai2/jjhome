@@ -6,6 +6,7 @@ import { ContentGrid } from "./components/ui/desktop/ContentGrid";
 import { ProfilePage } from "./pages/ProfilePage";
 import { JonghapSajuPage } from "./pages/JonghapSajuPage";
 import { CoupleGungapPage } from "./pages/CoupleGungapPage";
+import TodayFortunePage from "./pages/TodayFortunePage";
 
 const cardItems = [
   {
@@ -53,6 +54,7 @@ function App() {
     if (currentPage === "profile") return <ProfilePage />;
     if (currentPage === "jonghap") return <JonghapSajuPage />;
     if (currentPage === "couple") return <CoupleGungapPage />;
+    if (currentPage === "today") return <TodayFortunePage />;
     return <HomePageContent />;
   };
 
