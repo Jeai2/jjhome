@@ -1,36 +1,12 @@
 // 이 컴포넌트는 데스크톱 레이아웃의 좌측에 고정되는 네비게이션 바다.
 // 오직 데스크톱 화면에서만 보이도록 설계되었다.
 
-import {
-  Home,
-  Zap,
-  Heart,
-  Wallet,
-  Users,
-  Clock,
-  Library,
-  HelpCircle,
-} from "lucide-react";
+import { mainMenuItems, secondaryMenuItems } from "@/config/menuConfig";
 
 interface SidebarProps {
   currentPage: string;
   onNavigate: (page: string) => void;
 }
-
-const mainMenuItems = [
-  { id: "home", name: "홈", icon: Home },
-  { id: "jonghap", name: "종합사주", icon: Zap },
-  { id: "sinnyeon", name: "신년운세", icon: Zap },
-  { id: "iseong", name: "이성운세", icon: Heart },
-  { id: "jaemul", name: "재물운세", icon: Wallet },
-  { id: "couple", name: "커플궁합", icon: Users },
-  { id: "today", name: "오늘의 운세", icon: Clock },
-];
-
-const secondaryMenuItems = [
-  { id: "storage", name: "운세 보관함", icon: Library },
-  { id: "inquiry", name: "문의사항", icon: HelpCircle },
-];
 
 export const Sidebar = ({ currentPage, onNavigate }: SidebarProps) => {
   const handleMenuClick = (e: React.MouseEvent, pageId: string) => {

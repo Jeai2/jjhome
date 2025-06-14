@@ -77,7 +77,7 @@ function App() {
 
       {/* 모바일 세계 */}
       <div className="lg:hidden">
-        <MobileLayout onLogoClick={() => handleNavigate("home")}>
+        <MobileLayout onNavigate={handleNavigate}>
           <CurrentPageContent />
         </MobileLayout>
       </div>
