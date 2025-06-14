@@ -4,11 +4,12 @@ import { MobileLayout } from "./components/layout/MobileLayout";
 import { HeroSection } from "./components/ui/desktop/HeroSection";
 import { ContentGrid } from "./components/ui/desktop/ContentGrid";
 import { ProfilePage } from "./pages/ProfilePage";
-import { JonghapSajuPage } from "./pages/JonghapSajuPage";
-import { CoupleGungapPage } from "./pages/CoupleGungapPage";
+import JonghapSajuPage from "./pages/JonghapSajuPage";
+import CoupleGungapPage from "./pages/CoupleGungapPage";
 import TodayFortunePage from "./pages/TodayFortunePage";
 import InquiryPage from "./pages/InquiryPage";
 import FortuneArchivePage from "./pages/FortuneArchivePage";
+import SinnyeonUnsePage from "./pages/SinnyeonUnsePage";
 
 const cardItems = [
   {
@@ -59,6 +60,7 @@ function App() {
     if (currentPage === "today") return <TodayFortunePage />;
     if (currentPage === "inquiry") return <InquiryPage />;
     if (currentPage === "storage") return <FortuneArchivePage />;
+    if (currentPage === "sinnyeon") return <SinnyeonUnsePage />;
     return <HomePageContent />;
   };
 
