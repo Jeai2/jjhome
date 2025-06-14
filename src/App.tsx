@@ -8,6 +8,7 @@ import { JonghapSajuPage } from "./pages/JonghapSajuPage";
 import { CoupleGungapPage } from "./pages/CoupleGungapPage";
 import TodayFortunePage from "./pages/TodayFortunePage";
 import InquiryPage from "./pages/InquiryPage";
+import FortuneArchivePage from "./pages/FortuneArchivePage";
 
 const cardItems = [
   {
@@ -57,6 +58,7 @@ function App() {
     if (currentPage === "couple") return <CoupleGungapPage />;
     if (currentPage === "today") return <TodayFortunePage />;
     if (currentPage === "inquiry") return <InquiryPage />;
+    if (currentPage === "storage") return <FortuneArchivePage />;
     return <HomePageContent />;
   };
 
